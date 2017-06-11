@@ -1,6 +1,7 @@
 require 'securerandom'
 require 'git'
 require 'semantic'
+require 'rake_terraform'
 
 RakeTerraform.define_installation_tasks(version: '0.9.8')
 
