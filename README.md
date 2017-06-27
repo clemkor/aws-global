@@ -1,15 +1,15 @@
-AWS Mining Node
+AWS Environment
 ===============
 
-An Ethereum mining node on AWS.
+A basic AWS environment into which components can be deployed.
 
 Development
 -----------
 
 ### Machine Requirements
 
-In order for the build to run correctly, a few tools will need to be installed on your
-development machine:
+In order for the build to run correctly, a few tools will need to be installed 
+on your development machine:
 
 * Ruby (2.3.1)
 * Bundler
