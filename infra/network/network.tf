@@ -24,7 +24,7 @@ module "network" {
 
   bastion_ami = "${data.aws_ami.amazon_linux.id}"
   bastion_ssh_public_key_path = "${var.bastion_ssh_public_key_path}"
-  bastion_ssh_allow_cidrs = "${var.bastion_ssh_allow_cidrs}"
+  bastion_ssh_allow_cidrs = "${join(",", var.bastion_ssh_allow_cidrs)}"
 
   domain_name = "${data.terraform_remote_state.common.domain_name}"
   public_zone_id = "${data.terraform_remote_state.common.public_dns_zone_id}"

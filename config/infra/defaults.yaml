@@ -1,0 +1,16 @@
+---
+components_bucket_name: tobyclemson-mining-operations
+
+deployment_identifier: dev
+component: environment
+
+region: eu-west-2
+vpc_cidr: 10.0.0.0/16
+
+domain_name: eth-quest.net
+
+bastion_ssh_allowed_cidrs:
+  - 86.139.177.5/32
+
+common_state_key: environment/deployment-state/common/default.tfstate
+network_state_key: "environment/deployment-state/network/%{hiera('deployment_identifier')}.tfstate"

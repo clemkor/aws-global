@@ -1,14 +1,17 @@
+$:.unshift File.join(File.dirname(__FILE__), 'lib')
+
 require 'securerandom'
 require 'git'
 require 'semantic'
 require 'rake_terraform'
 
-require_relative 'lib/deployment'
-require_relative 'lib/terraform'
+require 'configuration'
 
 RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
     version: '0.9.8')
+
+configuration = Configuration.new
 
 task :default => [
     :'common:plan',
@@ -22,13 +25,13 @@ namespace :common do
     t.work_directory = 'build'
 
     t.backend_config = lambda do
-      Terraform.backend_config_for(
-          Terraform.common_state_key)
+      configuration.terraform.backend_config_for(
+          configuration.common_state_key)
     end
 
-    t.vars = lambda do
-      Terraform.common_vars
-    end
+    t.vars = configuration
+                 .for_scope(role: 'common')
+                 .vars
   end
 end
 
@@ -41,14 +44,17 @@ namespace :network do
     t.work_directory = 'build'
 
     t.backend_config = lambda do |args|
-      Terraform.backend_config_for(
-          Terraform.network_state_key_for(
-              Deployment.identifier_for(args)))
+      configuration.terraform.backend_config_for(
+          configuration
+              .for_args(args)
+              .network_state_key)
     end
 
     t.vars = lambda do |args|
-      Terraform.network_vars_for(
-          deployment_identifier: Deployment.identifier_for(args))
+      configuration
+          .for_args(args)
+          .for_scope(role: 'network')
+          .vars
     end
   end
 end

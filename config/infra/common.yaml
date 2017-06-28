@@ -1,0 +1,4 @@
+---
+vars:
+  region: "%{hiera('region')}"
+  domain_name: "%{hiera('domain_name')}"
