@@ -3,8 +3,6 @@ require 'hiera'
 require 'active_support'
 require 'active_support/core_ext/hash/keys'
 
-require_relative 'terraform'
-
 class Configuration
   def initialize(args = {}, scope = {}, hiera = nil)
     @args = args

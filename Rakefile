@@ -24,15 +24,17 @@ namespace :common do
     t.source_directory = 'infra/common'
     t.work_directory = 'build'
 
-    t.backend_config =
-        configuration
-            .for_scope(role: 'common')
-            .backend_config
+    t.backend_config = lambda do
+      configuration
+          .for_scope(role: 'common')
+          .backend_config
+    end
 
-    t.vars =
-        configuration
-            .for_scope(role: 'common')
-            .vars
+    t.vars = lambda do
+      configuration
+          .for_scope(role: 'common')
+          .vars
+    end
   end
 end
 
@@ -55,6 +57,30 @@ namespace :network do
       configuration
           .for_args(args)
           .for_scope(role: 'network')
+          .vars
+    end
+  end
+end
+
+namespace :cluster do
+  RakeTerraform.define_command_tasks do |t|
+    t.argument_names = [:deployment_identifier]
+
+    t.configuration_name = 'mining cluster'
+    t.source_directory = 'infra/cluster'
+    t.work_directory = 'build'
+
+    t.backend_config = lambda do |args|
+      configuration
+          .for_args(args)
+          .for_scope(role: 'cluster')
+          .backend_config
+    end
+
+    t.vars = lambda do |args|
+      configuration
+          .for_args(args)
+          .for_scope(role: 'cluster')
           .vars
     end
   end

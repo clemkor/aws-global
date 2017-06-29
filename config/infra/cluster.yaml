@@ -1,0 +1,20 @@
+---
+vars:
+  region: "%{hiera('region')}"
+  private_network_cidr: "%{hiera('private_network_cidr')}"
+
+  component: "%{hiera('component')}"
+  deployment_identifier: "%{hiera('deployment_identifier')}"
+
+  cluster_instance_ssh_public_key_path: "%{cwd}/config/secrets/keys/cluster/ssh.public"
+  cluster_instance_type: "t2.nano"
+  cluster_minimum_size: 1
+  cluster_maximum_size: 2
+  cluster_desired_capacity: 2
+
+  state_bucket: "%{hiera('components_bucket_name')}"
+  state_network_key: "%{hiera('network_state_key')}"
+backend_config:
+  bucket: "%{hiera('components_bucket_name')}"
+  key: "%{hiera('cluster_state_key')}"
+  region: "%{hiera('region')}"
