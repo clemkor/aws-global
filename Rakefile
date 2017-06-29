@@ -24,14 +24,15 @@ namespace :common do
     t.source_directory = 'infra/common'
     t.work_directory = 'build'
 
-    t.backend_config = lambda do
-      configuration.terraform.backend_config_for(
-          configuration.common_state_key)
-    end
+    t.backend_config =
+        configuration
+            .for_scope(role: 'common')
+            .backend_config
 
-    t.vars = configuration
-                 .for_scope(role: 'common')
-                 .vars
+    t.vars =
+        configuration
+            .for_scope(role: 'common')
+            .vars
   end
 end
 
@@ -44,10 +45,10 @@ namespace :network do
     t.work_directory = 'build'
 
     t.backend_config = lambda do |args|
-      configuration.terraform.backend_config_for(
-          configuration
-              .for_args(args)
-              .network_state_key)
+      configuration
+          .for_args(args)
+          .for_scope(role: 'network')
+          .backend_config
     end
 
     t.vars = lambda do |args|
@@ -56,17 +57,5 @@ namespace :network do
           .for_scope(role: 'network')
           .vars
     end
-  end
-end
-
-namespace :release do
-  desc 'Increment and push tag'
-  task :tag do
-    repo = Git.open('.')
-    tags = repo.tags
-    latest_tag = tags.map {|tag| Semantic::Version.new(tag.name)}.max
-    next_tag = latest_tag.increment!(:patch)
-    repo.add_tag(next_tag.to_s)
-    repo.push('origin', 'master', tags: true)
   end
 end

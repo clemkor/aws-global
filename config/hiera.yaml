@@ -1,10 +1,10 @@
 ---
 :backends:
-  - args
-  - env
-  - yaml
+  - "args"
+  - "env"
+  - "yaml"
 :yaml:
-  :datadir: config/infra
+  :datadir: "config/infra"
 :hierarchy:
   - "%{role}"
-  - defaults
+  - "defaults"
