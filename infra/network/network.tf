@@ -13,7 +13,7 @@ data "aws_ami" "amazon_linux" {
 }
 
 module "network" {
-  source = "github.com/infrablocks/terraform-aws-base-networking?ref=0.1.8//src"
+  source = "github.com/infrablocks/terraform-aws-base-networking?ref=0.1.11//src"
 
   region = "${var.region}"
   availability_zones = "${join(",", data.aws_availability_zones.all.names)}"
