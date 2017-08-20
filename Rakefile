@@ -1,8 +1,5 @@
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
-require 'securerandom'
-require 'git'
-require 'semantic'
 require 'rake_terraform'
 
 require 'configuration'
