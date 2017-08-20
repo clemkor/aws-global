@@ -1,5 +1,5 @@
 ---
-components_bucket_name: "tobyclemson-mining-operations"
+components_bucket_name: "eth-quest-components"
 
 region: "eu-west-2"
 vpc_cidr: "10.0.0.0/16"
