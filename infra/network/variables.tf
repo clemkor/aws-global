@@ -10,4 +10,4 @@ variable "bastion_ssh_allow_cidrs" {
 }
 
 variable "state_bucket" {}
-variable "state_common_key" {}
+variable "common_state_key" {}

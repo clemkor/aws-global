@@ -11,4 +11,4 @@ variable "cluster_maximum_size" {}
 variable "cluster_desired_capacity" {}
 
 variable "state_bucket" {}
-variable "state_network_key" {}
+variable "network_state_key" {}

@@ -13,7 +13,7 @@ vars:
   cluster_desired_capacity: 2
 
   state_bucket: "%{hiera('components_bucket_name')}"
-  state_network_key: "%{hiera('network_state_key')}"
+  network_state_key: "%{hiera('network_state_key')}"
 backend_config:
   bucket: "%{hiera('components_bucket_name')}"
   key: "%{hiera('cluster_state_key')}"

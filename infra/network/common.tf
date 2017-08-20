@@ -3,7 +3,7 @@ data "terraform_remote_state" "common" {
 
   config {
     bucket = "${var.state_bucket}"
-    key = "${var.state_common_key}"
+    key = "${var.common_state_key}"
     region = "${var.region}"
   }
 }
