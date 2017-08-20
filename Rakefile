@@ -12,8 +12,26 @@ configuration = Configuration.new
 
 task :default => [
     :'common:plan',
-    :'network:plan'
+    :'network:plan',
+    :'cluster:plan'
 ]
+
+namespace :preliminary do
+  RakeTerraform.define_command_tasks do |t|
+    t.configuration_name = 'preliminary'
+    t.source_directory = 'infra/preliminary'
+    t.work_directory = 'build'
+
+    t.state_file = File.join(Dir.pwd, 'preliminary.tfstate')
+
+    t.vars = lambda do
+      configuration
+          .for_scope(role: 'preliminary')
+          .vars
+    end
+  end
+end
+
 
 namespace :common do
   RakeTerraform.define_command_tasks do |t|

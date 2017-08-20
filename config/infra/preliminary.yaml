@@ -1,0 +1,4 @@
+---
+vars:
+  region: "%{hiera('region')}"
+  components_bucket_name: "%{hiera('components_bucket_name')}"
