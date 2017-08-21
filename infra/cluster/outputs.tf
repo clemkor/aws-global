@@ -1,6 +1,6 @@
-output "id" {
-  value = "${module.ecs_cluster.ecs_cluster_id}"
+output "cluster_id" {
+  value = "${module.ecs_cluster.cluster_id}"
 }
 output "service_role_arn" {
-  value = "${module.ecs_cluster.ecs_cluster_service_role_arn}"
+  value = "${module.ecs_cluster.service_role_arn}"
 }
