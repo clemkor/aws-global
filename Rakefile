@@ -1,14 +1,13 @@
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
 require 'rake_terraform'
-
-require 'configuration'
+require 'confidante'
 
 RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
-    version: '0.10.3')
+    version: '0.10.8')
 
-configuration = Configuration.new
+configuration = Confidante.configuration
 
 task :default => [
     :'common:plan',
@@ -63,14 +62,14 @@ namespace :network do
 
     t.backend_config = lambda do |args|
       configuration
-          .for_args(args)
+          .for_overrides(args)
           .for_scope(role: 'network')
           .backend_config
     end
 
     t.vars = lambda do |args|
       configuration
-          .for_args(args)
+          .for_overrides(args)
           .for_scope(role: 'network')
           .vars
     end
@@ -87,14 +86,14 @@ namespace :cluster do
 
     t.backend_config = lambda do |args|
       configuration
-          .for_args(args)
+          .for_overrides(args)
           .for_scope(role: 'cluster')
           .backend_config
     end
 
     t.vars = lambda do |args|
       configuration
-          .for_args(args)
+          .for_overrides(args)
           .for_scope(role: 'cluster')
           .vars
     end

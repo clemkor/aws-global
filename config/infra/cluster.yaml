@@ -14,6 +14,7 @@ vars:
 
   state_bucket: "%{hiera('components_bucket_name')}"
   network_state_key: "%{hiera('network_state_key')}"
+
 backend_config:
   bucket: "%{hiera('components_bucket_name')}"
   key: "%{hiera('cluster_state_key')}"

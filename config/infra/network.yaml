@@ -6,11 +6,9 @@ vars:
   component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"
 
-  bastion_ssh_public_key_path: "%{cwd}/config/secrets/keys/bastion/ssh.public"
-  bastion_ssh_allow_cidrs: "%{hiera('bastion_ssh_allowed_cidrs')}"
-
   state_bucket: "%{hiera('components_bucket_name')}"
   common_state_key: "%{hiera('common_state_key')}"
+
 backend_config:
   bucket: "%{hiera('components_bucket_name')}"
   key: "%{hiera('network_state_key')}"

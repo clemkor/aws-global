@@ -2,6 +2,7 @@
 vars:
   region: "%{hiera('region')}"
   domain_name: "%{hiera('domain_name')}"
+
 backend_config:
   bucket: "%{hiera('components_bucket_name')}"
   key: "%{hiera('common_state_key')}"

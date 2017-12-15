@@ -1,5 +1,5 @@
 module "ecs_cluster" {
-  source = "github.com/infrablocks/terraform-aws-ecs-cluster?ref=0.1.3//src"
+  source = "github.com/infrablocks/terraform-aws-ecs-cluster?ref=0.2.1//src"
 
   region = "${var.region}"
   vpc_id = "${data.terraform_remote_state.network.vpc_id}"

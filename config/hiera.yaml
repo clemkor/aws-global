@@ -1,6 +1,6 @@
 ---
 :backends:
-  - "args"
+  - "overrides"
   - "env"
   - "yaml"
 :yaml:
