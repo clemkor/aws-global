@@ -15,4 +15,7 @@ module "ecs_cluster" {
   cluster_minimum_size = "${var.cluster_minimum_size}"
   cluster_maximum_size = "${var.cluster_maximum_size}"
   cluster_desired_capacity = "${var.cluster_desired_capacity}"
+
+  cluster_instance_root_block_device_size = "${var.cluster_instance_root_block_device_size}"
+  cluster_instance_docker_block_device_size = "${var.cluster_instance_docker_block_device_size}"
 }
