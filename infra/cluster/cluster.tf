@@ -18,4 +18,21 @@ module "ecs_cluster" {
 
   cluster_instance_root_block_device_size = "${var.cluster_instance_root_block_device_size}"
   cluster_instance_docker_block_device_size = "${var.cluster_instance_docker_block_device_size}"
+
+  cluster_instance_amis = {
+    us-east-1 = "ami-fad25980"
+    us-east-2 = "ami-58f5db3d"
+    us-west-1 = "ami-62e0d802"
+    us-west-2 = "ami-7114c909"
+    eu-west-1 = "ami-4cbe0935"
+    eu-west-2 = "ami-dbfee1bf"
+    eu-central-1 = "ami-05991b6a"
+    ap-northeast-1 = "ami-56bd0030"
+    ap-northeast-2 = "ami-7267c01c"
+    ap-southeast-1 = "ami-1bdc8b78"
+    ap-southeast-2 = "ami-14b55f76"
+    ca-central-1 = "ami-918b30f5"
+    ap-south-1 = "ami-e4d29c8b"
+    sa-east-1 = "ami-d596d2b9"
+  }
 }
