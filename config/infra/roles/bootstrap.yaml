@@ -1,0 +1,5 @@
+---
+vars:
+  region: "%{hiera('region')}"
+
+  storage_bucket_name: "%{hiera('storage_bucket_name')}"

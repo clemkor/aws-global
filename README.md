@@ -1,7 +1,7 @@
-AWS Environment
-===============
+AWS Global
+==========
 
-A basic AWS environment into which components can be deployed.
+Global set up of AWS account.
 
 Development
 -----------

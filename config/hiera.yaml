@@ -6,5 +6,5 @@
 :yaml:
   :datadir: "config/infra"
 :hierarchy:
-  - "%{role}"
+  - "roles/%{role}"
   - "defaults"

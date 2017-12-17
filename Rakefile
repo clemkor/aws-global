@@ -5,32 +5,30 @@ require 'confidante'
 
 RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
-    version: '0.10.8')
+    version: '0.11.1')
 
 configuration = Confidante.configuration
 
 task :default => [
-    :'common:plan',
-    :'network:plan',
-    :'cluster:plan'
+    :'bootstrap:plan',
+    :'common:plan'
 ]
 
-namespace :preliminary do
+namespace :bootstrap do
   RakeTerraform.define_command_tasks do |t|
-    t.configuration_name = 'preliminary'
-    t.source_directory = 'infra/preliminary'
+    t.configuration_name = 'bootstrap'
+    t.source_directory = 'infra/bootstrap'
     t.work_directory = 'build'
 
-    t.state_file = File.join(Dir.pwd, 'preliminary.tfstate')
+    t.state_file = File.join(Dir.pwd, 'state/bootstrap.tfstate')
 
     t.vars = lambda do
       configuration
-          .for_scope(role: 'preliminary')
+          .for_scope(role: 'bootstrap')
           .vars
     end
   end
 end
-
 
 namespace :common do
   RakeTerraform.define_command_tasks do |t|
@@ -47,54 +45,6 @@ namespace :common do
     t.vars = lambda do
       configuration
           .for_scope(role: 'common')
-          .vars
-    end
-  end
-end
-
-namespace :network do
-  RakeTerraform.define_command_tasks do |t|
-    t.argument_names = [:deployment_identifier]
-
-    t.configuration_name = 'mining network'
-    t.source_directory = 'infra/network'
-    t.work_directory = 'build'
-
-    t.backend_config = lambda do |args|
-      configuration
-          .for_overrides(args)
-          .for_scope(role: 'network')
-          .backend_config
-    end
-
-    t.vars = lambda do |args|
-      configuration
-          .for_overrides(args)
-          .for_scope(role: 'network')
-          .vars
-    end
-  end
-end
-
-namespace :cluster do
-  RakeTerraform.define_command_tasks do |t|
-    t.argument_names = [:deployment_identifier]
-
-    t.configuration_name = 'mining cluster'
-    t.source_directory = 'infra/cluster'
-    t.work_directory = 'build'
-
-    t.backend_config = lambda do |args|
-      configuration
-          .for_overrides(args)
-          .for_scope(role: 'cluster')
-          .backend_config
-    end
-
-    t.vars = lambda do |args|
-      configuration
-          .for_overrides(args)
-          .for_scope(role: 'cluster')
           .vars
     end
   end
