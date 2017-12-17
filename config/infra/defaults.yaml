@@ -4,6 +4,8 @@ storage_bucket_name: "eth-quest-aws-global"
 region: "eu-west-1"
 
 domain_name: "eth-quest.net"
+email_bucket_name: "eth-quest-email"
+default_vpc_id: "vpc-76d8c711"
 
 common_state_bucket_name: "%{hiera('storage_bucket_name')}"
-common_state_key: "environment/deployment-state/common/default.tfstate"
+common_state_key: "deployment-state/common/default.tfstate"

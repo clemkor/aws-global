@@ -3,6 +3,8 @@ vars:
   region: "%{hiera('region')}"
 
   domain_name: "%{hiera('domain_name')}"
+  email_bucket_name: "%{hiera('email_bucket_name')}"
+  default_vpc_id: "%{hiera('default_vpc_id')}"
 
 backend_config:
   bucket: "%{hiera('common_state_bucket_name')}"
