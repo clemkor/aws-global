@@ -1,5 +1,5 @@
 ---
-storage_bucket_name: "eth-quest-aws-global"
+storage_bucket_name: "eth-quest-global-storage-default"
 
 region: "eu-west-1"
 
