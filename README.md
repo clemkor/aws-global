@@ -3,8 +3,7 @@ AWS Global
 
 Global set up of AWS account.
 
-Development
------------
+## Development
 
 ### Machine Requirements
 
@@ -55,3 +54,17 @@ eval "$(direnv hook $SHELL)"
 
 direnv allow <repository-directory>
 ```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at 
+https://github.com/clemkor/aws-global. This project is intended to
+be a safe, welcoming space for collaboration, and contributors are expected to
+adhere to the [Contributor Covenant](http://contributor-covenant.org) code of
+conduct.
+
+
+## License
+
+The gem is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
